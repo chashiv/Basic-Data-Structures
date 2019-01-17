@@ -1,3 +1,2 @@
 *.exe
-
-\Projects\Sublime Text\Data Structures\Linked List\Double_Linked_List.c
+**/Linked List/Double_Linked_List.c
