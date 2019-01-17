@@ -1,4 +1,4 @@
 *.exe
 **/Linked List/Double_Linked_List.c
-Data Structures/Tree/binary_search_tree.c
+**/Trees/binary_search_tree.c
 tmp.c
