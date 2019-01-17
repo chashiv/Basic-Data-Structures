@@ -1,3 +1,8 @@
+/*
+   Author : Shivam Chauhan
+   Date   : Jan 17 , 2019
+   Binary Search Tree Recursive Implementation
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
