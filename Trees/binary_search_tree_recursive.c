@@ -50,10 +50,10 @@ int main()
             scanf("%d",&choice);	
             switch(choice)
             {
-		  case 1 : printf("\nEnter the element :");
-               			   scanf("%d",&element); 
-               			   root = insert( root , element );
-               			   break;
+		  case 1 :   printf("\nEnter the element :");
+               		     scanf("%d",&element); 
+               	             root = insert( root , element );
+               		     break;
 
 	          case 2 : if (!is_empty())
       			            {
@@ -67,8 +67,8 @@ int main()
 
                   case 3 : if (!is_empty())
                            {
-                              printf("\nThe Inorder is : \n");
-                              inorder_display(root);
+                             printf("\nThe Inorder is : \n");
+                             inorder_display(root);
                            }
                            else
                               printf("\nTree is Empty!!!");
