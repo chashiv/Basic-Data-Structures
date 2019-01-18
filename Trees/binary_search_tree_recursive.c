@@ -56,14 +56,13 @@ int main()
                		     break;
 
 	          case 2 : if (!is_empty())
-      			            {
-      			                 printf("\nThe Preorder is : \n");
-		                          preorder_display(root);
+      			   {
+      			      printf("\nThe Preorder is : \n");
+		              preorder_display(root);
                            }
                            else
-      				              printf("\nTree is Empty!!!");
-      			
-      			            break;
+      			      printf("\nTree is Empty!!!");
+      			      break;
 
                   case 3 : if (!is_empty())
                            {
