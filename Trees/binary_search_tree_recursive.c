@@ -9,7 +9,7 @@
 
 struct binary_search_tree
 {
-   struct binary_search_tree *left_child ;
+	struct binary_search_tree *left_child ;
 	int info ;
 	struct binary_search_tree *right_child ;
 } *root = NULL ;
@@ -50,12 +50,12 @@ int main()
             scanf("%d",&choice);	
             switch(choice)
             {
-                  case 1 : printf("\nEnter the element :");
+		  case 1 : printf("\nEnter the element :");
                			   scanf("%d",&element); 
                			   root = insert( root , element );
                			   break;
 
-	              case 2 : if (!is_empty())
+	          case 2 : if (!is_empty())
       			            {
       			                 printf("\nThe Preorder is : \n");
 		                          preorder_display(root);
