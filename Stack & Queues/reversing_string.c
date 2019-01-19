@@ -1,3 +1,8 @@
+/*
+   Author : Shivam Chauhan
+   Date   : Jan 17 , 2019
+   Reversing the string Implementation
+*/
 #include<stdio.h>
 #include<stdlib.h>
 #include <string.h>

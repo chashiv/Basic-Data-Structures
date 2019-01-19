@@ -1,3 +1,9 @@
+/*
+   Author : Shivam Chauhan
+   Date   : Jan 17 , 2019
+   Priority Queue Implementation
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 struct priority_queue

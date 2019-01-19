@@ -1,7 +1,7 @@
 /*
    Author : Shivam Chauhan
    Date   : Jan 17 , 2019
-   Circular Queue Implementation
+   Double Ended Queue Implementation
 */
 #include<stdio.h>
 #include<stdlib.h>

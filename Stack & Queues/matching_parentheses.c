@@ -1,9 +1,14 @@
 /*
-      '[A-B*(C+D)'
-      '(1+5}'
-      '[5+4*(9-2)]'
-      '[A+B-(C%D}]'
-      '[A/(B-C)*D]'
+   Author : Shivam Chauhan
+   Date   : Jan 17 , 2019
+   Parentheses Matching
+
+Examples : 
+      '[A-B*(C+D)'     : invalid
+      '(1+5}'          : invalid
+      '[5+4*(9-2)]'    : valid
+      '[A+B-(C%D}]'    : invalid
+      '[A/(B-C)*D]'    : valid
 
 */
 #include<stdio.h>

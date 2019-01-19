@@ -1,3 +1,8 @@
+/*
+   Author : Shivam Chauhan
+   Date   : Jan 17 , 2019
+   Queue(Using Array) Implementation
+*/
 #include<stdio.h>
 #include<stdlib.h>
 

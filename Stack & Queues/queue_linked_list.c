@@ -1,3 +1,9 @@
+
+/*
+   Author : Shivam Chauhan
+   Date   : Jan 17 , 2019
+   Queue(Using Linked List) Implementation
+*/
 #include <stdio.h>
 #include <stdlib.h>
 struct queue
