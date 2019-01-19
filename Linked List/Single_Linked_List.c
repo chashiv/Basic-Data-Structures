@@ -1,3 +1,8 @@
+/*
+   Author : Shivam Chauhan
+   Date   : Jan 17 , 2019
+   Signle Linked List and its associated operations
+*/
 #include <stdio.h>
 #include <stdlib.h>
 struct node
