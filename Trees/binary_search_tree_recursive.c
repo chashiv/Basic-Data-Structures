@@ -5,7 +5,8 @@
 */
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+
+#define COUNT 10 
 
 struct binary_search_tree
 {
@@ -16,12 +17,13 @@ struct binary_search_tree
 
 
 int size = 0 ;
-
 int is_empty();
+int get_height( struct binary_search_tree *ptr );
 struct binary_search_tree *insert( struct binary_search_tree *ptr , int data ) ;
 void preorder_display( struct binary_search_tree *root );
 void inorder_display( struct binary_search_tree *root );
 void postorder_display( struct binary_search_tree *root );
+void print_order( struct binary_search_tree * ptr , int indent);
 int search( struct binary_search_tree * root , int data );
 int max( struct binary_search_tree * root );
 int min( struct binary_search_tree * root );
@@ -44,25 +46,26 @@ int main()
             printf("\n\t\t\t\t 7.  Height ") ;  
             printf("\n\t\t\t\t 8.  Maximum") ;
             printf("\n\t\t\t\t 9.  Minimum") ;         
-            printf("\n\t\t\t\t10.  Delete") ;                   
-            printf("\n\t\t\t\t11.  Exit ");
+            printf("\n\t\t\t\t10.  Delete") ;
+            printf("\n\t\t\t\t11.  Print Tree") ;                    
+            printf("\n\t\t\t\t12.  Exit ");
             printf("\n\t\t\t\t\nEnter your Choice : ") ;
             scanf("%d",&choice);	
             switch(choice)
             {
-		  case 1 :   printf("\nEnter the element :");
-               		     scanf("%d",&element); 
-               	             root = insert( root , element );
-               		     break;
+		            case 1 :  printf("\nEnter the element :");
+               		       scanf("%d",&element); 
+               	          root = insert( root , element );
+               		       break;
 
-	          case 2 : if (!is_empty())
-      			   {
-      			      printf("\nThe Preorder is : \n");
-		              preorder_display(root);
+	               case 2 : if (!is_empty())
+      			            {
+      			                printf("\nThe Preorder is : \n");
+		                         print_order(root,0);
                            }
                            else
-      			      printf("\nTree is Empty!!!");
-      			      break;
+      			               printf("\nTree is Empty!!!");
+      			            break;
 
                   case 3 : if (!is_empty())
                            {
@@ -105,7 +108,7 @@ int main()
                         
                            break;
       	     
-                  case 7 : printf("\nThe Height of the BST is : %.0f",ceil( log10( size + 1) / log10(2) ) );
+                  case 7 : printf("\nThe Height of the BST is : %d",get_height(root) );
                            break ;
 
                   case 8 : if (!is_empty())
@@ -134,6 +137,15 @@ int main()
                               printf("\nTree is Empty!!!");  
 
                            break ;
+                  case 11 : if (!is_empty())
+                           {
+                              printf("\nThe Postorder is : \n");
+                              print_order(root , 0);
+                           }
+                           else
+                              printf("\nTree is Empty!!!");
+                        
+                           break;
 
       	     default : exit(0);
       			   break;
@@ -145,6 +157,18 @@ int main()
 int is_empty()
 {
       return ( root == NULL ) ; 
+}
+
+int get_height( struct binary_search_tree *ptr)
+{
+   int left_height , right_height ;
+   if ( ptr == NULL )
+   {
+      return 0;
+   }
+   left_height = get_height( ptr -> left_child );
+   right_height = get_height( ptr -> right_child );
+   return ( left_height > right_height ? left_height + 1 : right_height + 1);
 }
 
 struct binary_search_tree * insert( struct binary_search_tree *ptr , int data )
@@ -297,5 +321,23 @@ struct binary_search_tree * delete( struct binary_search_tree * ptr , int data )
 
       }
       return ptr;
+}
+
+void print_order( struct binary_search_tree *ptr, int space)
+{
+    int i;
+    if ( ptr == NULL )
+    { 
+        return; 
+    }
+    space += COUNT;
+    print_order ( ptr -> right_child , space);   
+    printf("\n"); 
+    for ( i = COUNT ; i < space ; i++ ) 
+    {
+        printf("%s"," "); 
+    }
+    printf("%d\n", ptr->info);   
+    print_order(ptr->left_child, space); 
 } 
 
