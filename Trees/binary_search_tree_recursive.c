@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define COUNT 10 
+#define COUNT 5
 
 struct binary_search_tree
 {
