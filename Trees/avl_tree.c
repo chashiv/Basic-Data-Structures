@@ -140,20 +140,16 @@ int get_balance ( struct avl *ptr)
    {
       return 0 ;
    }
-   else
-   {
-      return get_height(ptr -> left_child) - get_height(ptr-> right_child);
-   }
+   return get_height(ptr -> left_child) - get_height(ptr-> right_child);
 }
 
 struct avl *left_most_node( struct avl *ptr )
 {
-    struct avl *current = ptr ;  
-    while ( current -> left_child != NULL )
+    if ( ptr -> left_child == NULL)
     {
-      current = current -> left_child ;
+        return ptr;
     }
-    return current ;
+    return left_most_node( ptr -> left_child );
 }
 
 struct avl *right_rotate( struct avl *ptr)
@@ -291,6 +287,7 @@ struct avl *delete( struct avl *ptr , int element )
               *ptr = *tmp ;
             }
             free(tmp);
+            size--;
         }
 
         else
