@@ -20,6 +20,7 @@ int size = 0 ;
 int is_empty();
 int get_height( struct avl *ptr ) ;
 int get_balance( struct avl *ptr ) ;
+struct avl *left_most_node(struct avl *ptr);
 struct avl *right_rotate( struct avl *ptr);
 struct avl *left_rotate( struct avl *ptr);
 struct avl *insert( struct avl *ptr , int data ) ;
@@ -27,8 +28,7 @@ void print_order( struct avl *ptr , int indent );
 void preorder_display( struct avl *root );
 void inorder_display( struct avl *root );
 void postorder_display( struct avl *root );
-// int search( struct avl *root , int data );
-// struct avl *delete( struct avl *ptr , int data );
+struct avl *delete( struct avl *ptr , int data );
 
 int main()
 {
@@ -100,16 +100,16 @@ int main()
                            break ;
 
 
-                  // case 8 : if (!is_empty())
-                  //          {
-                  //             printf("\nEnter the element to be deleted :");
-                  //             scanf("%d",&element); 
-                  //             root = delete( root , element );
-                  //          }
-                  //          else
-                  //             printf("\nTree is Empty!!!");  
+                  case 8 : if (!is_empty())
+                           {
+                              printf("\nEnter the element to be deleted :");
+                              scanf("%d",&element); 
+                              root = delete( root , element );
+                           }
+                           else
+                              printf("\nTree is Empty!!!");  
 
-                  //          break ;
+                           break ;
 
       	     default : exit(0);
       			   break;
@@ -140,8 +140,22 @@ int get_balance ( struct avl *ptr)
    {
       return 0 ;
    }
-   return get_height(ptr -> left_child) - get_height(ptr-> right_child);
+   else
+   {
+      return get_height(ptr -> left_child) - get_height(ptr-> right_child);
+   }
 }
+
+struct avl *left_most_node( struct avl *ptr )
+{
+    struct avl *current = ptr ;  
+    while ( current -> left_child != NULL )
+    {
+      current = current -> left_child ;
+    }
+    return current ;
+}
+
 struct avl *right_rotate( struct avl *ptr)
 {
    struct avl *child_ptr = ptr -> left_child ;
@@ -245,3 +259,70 @@ void print_order( struct avl *ptr, int space)
     printf("%d\n", ptr->info);   
     print_order(ptr->left_child, space); 
 } 
+
+struct avl *delete( struct avl *ptr , int element )
+{
+    if ( ptr == NULL)
+    {
+      printf("%d is not present in the Tree!!!\n");
+      return ptr ;
+    }
+    if ( element < ptr -> info )
+    {
+      ptr -> left_child = delete( ptr -> left_child , element );
+    }
+    else if ( element > ptr -> info )
+    {
+      ptr -> right_child = delete( ptr -> right_child , element );
+    }
+    else
+    {
+
+        if ( ptr -> right_child ==  NULL || ptr -> left_child == NULL )
+        {
+            struct avl * tmp = ptr -> left_child ? ptr -> left_child : ptr -> right_child ;
+            if ( tmp == NULL )
+            {
+              tmp = ptr ;
+              ptr = NULL ;
+            }
+            else
+            {
+              *ptr = *tmp ;
+            }
+            free(tmp);
+        }
+
+        else
+        {
+            struct avl *tmp = left_most_node( ptr -> right_child );
+            ptr -> info = tmp -> info ;
+            ptr -> right_child = delete( ptr -> right_child , tmp -> info );
+        }
+    }
+    if ( ptr == NULL )
+    {
+      return ptr ;
+    }
+
+   int balance = get_balance( ptr );
+   // LL
+   if ( balance > 1 && get_balance( ptr -> left_child ) >= 0) 
+       return right_rotate(ptr); 
+   // RR 
+   if (balance < -1 && get_balance( ptr -> right_child ) <= 0) 
+       return left_rotate(ptr); 
+   // LR 
+   if (balance > 1 && get_balance( ptr -> left_child ) < 0 ) 
+   { 
+       ptr -> left_child =  left_rotate(ptr -> left_child); 
+       return right_rotate(ptr); 
+   } 
+   // RL
+   if (balance < -1 && get_balance( ptr -> right_child ) > 0) 
+   { 
+       ptr -> right_child = right_rotate(ptr -> right_child); 
+       return left_rotate(ptr); 
+   } 
+   return ptr; 
+}
