@@ -1,4 +1,5 @@
 *.exe
 **/Linked List/Double_Linked_List.c
 **/Trees/binary_search_tree.c
+**/Trees/red_black.c
 tmp.c
