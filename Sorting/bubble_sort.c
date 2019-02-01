@@ -20,6 +20,7 @@ int main()
 	}
 	bubble_sort(arr);
 	display(arr);
+	return 0 ;
 }
 void bubble_sort( int *arr)
 {
