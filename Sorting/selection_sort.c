@@ -20,6 +20,7 @@ int main()
 	}
 	selection_sort(arr);
 	display(arr);
+	return 0;
 }
 void selection_sort( int *arr)
 {
