@@ -1,7 +1,7 @@
 /*
    Author : Shivam Chauhan
    Date   : Feb 1 , 2019
-   Implementation of Selection Sorting
+   Implementation of Selection Sort
 */
 #include <stdio.h>
 #include <stdlib.h>
