@@ -503,7 +503,7 @@ void delete_balance(struct red_black *ptr)
 
   while( ptr != root )
   {
-    if( ptr != NULL && ptr == ptr-> parent-> left_child )
+    if( ptr == ptr-> parent-> left_child )
     {
             sib = ptr -> parent -> right_child;
             if( sib -> color == RED )
