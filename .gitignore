@@ -1,3 +1,4 @@
 *.exe
 **/Linked List/Double_Linked_List.c
 tmp.c
+**/Trees/b_tree.c
